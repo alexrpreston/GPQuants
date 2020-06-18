@@ -1,0 +1,71 @@
+{% load static %}
+
+<html>
+    
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'covidData/style.css' %}">
+    </head>
+    <body>
+        <div id="navBar">
+            <ul>
+                <li><a href="#contact">Corporate Flights</a></li>
+                <li><a href="about.asp">US Senate Trading</a></li>
+                <li><a href="about.asp">Insider Trading</a></li>
+                <li><a href="news.asp">Covid-19 Research</a></li>
+                <li style="float:left;"><a href="#">GP Quantitative</a></li>
+            </ul>
+        </div>
+        <div class="outerbox">
+            <a href="{% url 'scrape' %}">Refresh the Data</a>
+
+            
+                    <div class="tooltip">
+                      
+                      <span>{{ object.source }}</span>
+                    </div>
+                    <h1 class="lineBreaks"></h1>
+                    
+
+                    <table class="covidNewsTable">
+                        <tr>
+                          <th>Article Title</th>
+                          <th>Source</th>
+                          <th>Date</th>
+                        </tr>
+                        {% for object in covidHeadline %}
+                        
+                        <tr>
+                            <button type="button" class="collapsible">
+                            <td><a class="rowData" href={{ object.url }} target=”_blank”>{{ object.title }} </a></td>
+                            <td class="rowData">{{ object.source }}</td>
+                            <td class="rowData">6-22-2020</td>
+                            </button>
+                        </tr><div class="content">
+                            <p>{{ object.desc }}</p>
+                          </div>
+                        {% endfor %}
+                        
+                      </table>
+            
+        </div>
+        
+    </body>
+</html>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+</script>

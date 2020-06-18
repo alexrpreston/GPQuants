@@ -1,7 +1,8 @@
 from django.urls import path
 
-from . import views
+from covidData.views import index, scrape
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', index, name='index'),
+    path('scrape/', scrape, name='scrape'),
 ]

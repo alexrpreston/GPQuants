@@ -1,0 +1,91 @@
+html{
+    background-color: #7D8597;
+}
+
+.outerbox{
+    background-color: #1F252E;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);    
+    margin: 0% 2% .5% 2%;
+    height: 100%;
+}
+
+#navBar{
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.2);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #7D8597;
+    ;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 140%;
+    display: block;
+    color: #002855;
+    text-align: center;
+    padding: .9em 2.0em;
+    text-decoration: none;
+  }
+
+  .content {
+    padding: 16px;
+  }
+  
+  /* The sticky class is added to the header with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
+  table, th, td {
+    border: 2px solid #E0E0E0;
+    border-collapse: collapse;
+  }
+
+  .covidNewsTable{
+      width: 80%;
+      margin: auto;
+  } 
+  .rowData{
+
+      font-size: 130%;
+      color: #6EB0AD;
+      padding: 1%;
+      text-decoration: none;
+  }
+
+  .collapsible {
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: #ccc;
+  }
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
