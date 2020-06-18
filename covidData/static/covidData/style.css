@@ -1,12 +1,38 @@
 html{
-    background-color: #7D8597;
+    background-color: #32333D;
 }
+
+.companyHeader{
+  float:left;
+  margin-top: -5.5%;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 200%;
+  color: #DCE1D7;
+  text-align: center;
+  padding: .9em 2.0em;
+  text-decoration: none;
+}
+
+
+.covidTableHeader{
+  background-color: #E0E0E0;
+  font-size: 130%;
+}
+
+.tableHeaderName{
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #6EB0AD;
+  text-align: center;
+  padding-top: 3%;
+}
+
 
 .outerbox{
     background-color: #1F252E;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);    
     margin: 0% 2% .5% 2%;
-    height: 100%;
+    padding-bottom: 10%;
+    padding-top: 2%;
 }
 
 #navBar{
@@ -18,7 +44,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #7D8597;
+    background-color: #32333D;
     ;
   }
   
@@ -30,15 +56,13 @@ ul {
     font-family: 'Oswald', sans-serif;
     font-size: 140%;
     display: block;
-    color: #002855;
+    color: #DCE1D7;
     text-align: center;
     padding: .9em 2.0em;
     text-decoration: none;
   }
 
-  .content {
-    padding: 16px;
-  }
+  
   
   /* The sticky class is added to the header with JS when it reaches its scroll position */
   .sticky {
@@ -59,8 +83,39 @@ ul {
 
   .covidNewsTable{
       width: 80%;
+      height: 60%;
       margin: auto;
   } 
+
+.headerColumnTooltip{
+  position:absolute;
+  font-size: 60%;
+}
+
+.headerColumnTooltip .headerColumnTooltipText {
+  visibility: hidden;
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.headerColumnTooltip:hover .headerColumnTooltipText {
+  visibility: visible;
+}
+
+.covidTrialsTable{
+  width: 90%;
+  margin: auto;
+}
   .rowData{
 
       font-size: 130%;
@@ -70,22 +125,19 @@ ul {
   }
 
   .collapsible {
+    margin: -10% 0%;
+    padding: 0% 0%;
+    color: #6EB0AD;
+    text-decoration: none;
     cursor: pointer;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
   }
   
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .collapsible:hover {
-    background-color: #ccc;
-  }
+  
   
   /* Style the collapsible content. Note: hidden by default */
   .content {
-    padding: 0 18px;
+    
+    border-collapse: collapse;
+    color: #6EB0AD;
     display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
   }

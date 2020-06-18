@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from newsapi import NewsApiClient
-from covidData.models import covidHeadlines
+from covidData.models import covidHeadlines, covidClinicalTrials
+import requests
 
 
 def scrape(response):
     covidHeadlines.objects.all().delete()
-
+    covidClinicalTrials.objects.all().delete()
 
     newsapi = NewsApiClient(api_key = "7890f99f817b40a0a587325193ca0933")
     top = newsapi.get_everything(q ='(covid OR coronavirus) AND (treatment OR vaccine)')
@@ -28,14 +29,42 @@ def scrape(response):
         new_headline.desc = f['description']
         new_headline.save()
 
-    return redirect("../")
+    # ############################################################################
 
-    
+    parameters = {"fields": "BriefTitle,BriefSummary,DetailedDescription,StudyType,Phase,EnrollmentCount,StartDate,PrimaryCompletionDate,CompletionDate,ArmGroupInterventionName,PrimaryOutcomeMeasure,SecondaryOutcomeMeasure", 
+            "fmt": "JSON",
+            "expr": "covid"}
+
+    response = requests.get("https://clinicaltrials.gov/api/query/study_fields?", params=parameters)
+
+    data = response.json()
+    jsonResult = data["StudyFieldsResponse"]
+    topStudies = jsonResult["StudyFields"]
+
+    for i in range(len(topStudies)):
+        individualStudy = topStudies[i]
+        new_trial = covidClinicalTrials()
+        new_trial.title = str(individualStudy["BriefTitle"])[2:-2]
+        new_trial.briefSummary = str(individualStudy["BriefSummary"])[2:-2]
+        new_trial.detailedDesc = str(individualStudy["DetailedDescription"])[2:-2]
+        new_trial.studyType = str(individualStudy["StudyType"])[2:-2]
+        new_trial.Phase = str(individualStudy["Phase"])[2:-2]
+        new_trial.enrollment = str(individualStudy["EnrollmentCount"])[2:-2]
+        new_trial.studyCompletionDate = str(individualStudy["CompletionDate"])[2:-2]
+        new_trial.startDate = str(individualStudy["StartDate"])[2:-2]
+        new_trial.primaryCompletionDate = str(individualStudy["PrimaryCompletionDate"])[2:-2]
+        new_trial.armfirstintervention = str(individualStudy["ArmGroupInterventionName"])[2:-2]
+        new_trial.primaryOutcomeMes = str(individualStudy["PrimaryOutcomeMeasure"])[2:-2]
+        new_trial.secondaryOutcomeMes = str(individualStudy["SecondaryOutcomeMeasure"])[2:-2]
+        new_trial.save()
+
+    return redirect("../")
 
 def index(request):
     covidHeadlinesFull = covidHeadlines.objects.all()[8:]
-
+    covidTrialsFull = covidClinicalTrials.objects.all()[:4]
     context = {
+        "covidtrials": covidTrialsFull,
         "covidHeadline": covidHeadlinesFull,
     }
     return render(request, "covidData/home.html", context)

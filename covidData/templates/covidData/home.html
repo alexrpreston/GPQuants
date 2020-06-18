@@ -9,41 +9,76 @@
     <body>
         <div id="navBar">
             <ul>
-                <li><a href="#contact">Corporate Flights</a></li>
-                <li><a href="about.asp">US Senate Trading</a></li>
-                <li><a href="about.asp">Insider Trading</a></li>
-                <li><a href="news.asp">Covid-19 Research</a></li>
-                <li style="float:left;"><a href="#">GP Quantitative</a></li>
+                <li><a>Corporate Flights</a></li>
+                <li><a>US Senate Trading</a></li>
+                <li><a>Insider Trading</a></li>
+                <li><a>Covid-19 Research</a></li>
             </ul>
+            <h1 class="companyHeader">GP Quantitative</li>
         </div>
         <div class="outerbox">
             <a href="{% url 'scrape' %}">Refresh the Data</a>
 
-            
-                    <div class="tooltip">
-                      
-                      <span>{{ object.source }}</span>
-                    </div>
-                    <h1 class="lineBreaks"></h1>
-                    
-
+                <h1 class="tableHeaderName">Covid-19 Current Clinical Trials</h1>
+                <table class="covidTrialsTable">
+                  <tr>
+                    <th class="covidTableHeader">Brief Title<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <!--<th class="covidTableHeader">Brief Summary<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>-->
+                    <th class="covidTableHeader">Study Type<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Int. / Treatment 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Int. / Treatment 2<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Enrollement<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Study Start Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Est. Primary Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Est. Study Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Arm 1 / Int. 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Primary Outcome Measures<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                  </tr>
+                  {% for object in covidtrials %}
+                  <tr>
+                      <td class="rowData">{{ object.title }}</td>
+                      <!--<td class="rowData">{{ object.briefSummary }}</td>-->
+                      <td class="rowData">{{ object.studyType }}</td>
+                      <td class="rowData">Lorem Ipsum</td>
+                      <td class="rowData">Lorem Ipsum</td>
+                      <td class="rowData">{{ object.enrollment }}</td>
+                      <td class="rowData">{{ object.startDate }}</td>
+                      <td class="rowData">{{ object.primaryCompletionDate }}</td>
+                      <td class="rowData">{{ object.studyCompletionDate }}</td>
+                      <td class="rowData">{{ object.armfirstintervention }}</td>
+                      <td class="rowData">{{ object.primaryOutcomeMes }}</td>
+                  </tr>
+                  
+                  {% endfor %}
+                  
+                </table>
+                        
+                        
+                <h1 class="tableHeaderName">Covid-19 Current News Headlines involving <br>Treatments/Vaccines</h1>
                     <table class="covidNewsTable">
                         <tr>
-                          <th>Article Title</th>
-                          <th>Source</th>
-                          <th>Date</th>
+                          <th class="covidTableHeader">Article Title</th>
+                          <th class="covidTableHeader">Source</th>
+                          <th class="covidTableHeader">Date</th>
                         </tr>
                         {% for object in covidHeadline %}
                         
-                        <tr>
-                            <button type="button" class="collapsible">
-                            <td><a class="rowData" href={{ object.url }} target=”_blank”>{{ object.title }} </a></td>
+                        <tr class="collapsible">
+                            
+                            <td class="rowData">{{ object.title }}</td>
                             <td class="rowData">{{ object.source }}</td>
                             <td class="rowData">6-22-2020</td>
-                            </button>
-                        </tr><div class="content">
-                            <p>{{ object.desc }}</p>
-                          </div>
+                        </tr>
+                        
+                          <tr  class="content">
+                            <div  class="content">
+                              <td style="border: 0px">{{ object.desc }}</td>
+                              <p></p>
+                            </div>
+        
+                          </tr>
+                          
+                        
                         {% endfor %}
                         
                       </table>
@@ -54,18 +89,18 @@
 </html>
 
 <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
+   var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
     }
+  });
+} 
 </script>
