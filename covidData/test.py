@@ -11,7 +11,4 @@ data = response.json()
 jsonResult = data["StudyFieldsResponse"]
 topStudies = jsonResult["StudyFields"]
 
-for i in range(len(topStudies)):
-    individualStudy = topStudies[i]
-    temp = str(individualStudy["BriefTitle"])[2:-2]
-    print(temp)
+print(data)

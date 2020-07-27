@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
@@ -7,7 +8,7 @@ class covidHeadlines(models.Model):
     source = models.CharField(max_length=200)
     url = models.TextField()
     desc = models.TextField(null=True, blank=True)
-
+    publishedData = models.CharField(max_length=200)
     def __str__(self):
         return self.title
 
@@ -30,3 +31,7 @@ class covidClinicalTrials(models.Model):
 
     def __str__(self):
         return self.title
+
+class covidTreatmentTypes(models.Model):
+    treatmentTypes = ArrayField(models.TextField(blank=True, null=True, default=""), default=list)
+    treatmentTypeFreq = ArrayField(models.TextField(blank=True, null=True, default=""), default=list)
