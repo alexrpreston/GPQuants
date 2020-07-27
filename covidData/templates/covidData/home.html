@@ -18,7 +18,7 @@
         </div>
         <div class="outerbox">
             <a href="{% url 'scrape' %}">Refresh the Data</a>
-                <h1>Top Treatments used in Trials</h1>
+                <h1 class="tableHeaderName">Top Treatments used in Trials</h1>
                 <table>
                   <tr>
                     <th class="covidTableHeader">Treatment</th>
@@ -44,15 +44,15 @@
                   <tr>
                     <th class="covidTableHeader">Brief Title<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
                     <!--<th class="covidTableHeader">Brief Summary<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>-->
-                    <th class="covidTableHeader">Study Type<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Int. / Treatment 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Int. / Treatment 2<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Enrollement<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Study Start Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Est. Primary Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Est. Study Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Study Type<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">A type of clinical study in which participants are assigned to groups that receive one or more intervention/treatment (or no intervention) so that researchers can evaluate the effects of the interventions on biomedical or health-related outcomes. This allows for comparison between interventions and offers a scientifically robust method of determining the safety and outcome of the intervention.</span></a></th>
+                    <th class="covidTableHeader">Int. / Treatment 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">A process or action whose efficacy is the focus of a clinical study. Interventions include drugs, procedures, vaccines, and other products that are either investigational or already available. Interventions can also include noninvasive approaches, such as diet or exercise. Interventions 1 and 2 will usually be adminesteed to exclusive groups and their outcomes compared.</span></a></th>
+                    <th class="covidTableHeader">Int. / Treatment 2<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">A process or action whose efficacy is the focus of a clinical study. Interventions include drugs, procedures, vaccines, and other products that are either investigational or already available. Interventions can also include noninvasive approaches, such as diet or exercise. Interventions 1 and 2 will usually be adminesteed to exclusive groups and their outcomes compared.</span></a></th>
+                    <th class="covidTableHeader">Enrollement<a class="headerColumnTooltip"><span class="headerColumnTooltipText">The target number of participants that the researchers need for the study.</span></a></th>
+                    <th class="covidTableHeader">Study Start Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Date that the first participant was enrolled in the study.</span></a></th>
+                    <th class="covidTableHeader">Est. Primary Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">The date on which the last participant in a clinical study was examined or received an intervention to collect final data for the primary outcome measure.</span></a></th>
+                    <th class="covidTableHeader">Est. Study Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">The date on which the last participant in a clinical study was examined or received an intervention/treatment to collect final data for secondary outcome measures and adverse events (that is, the last participant's last visit).</span></a></th>
                     <th class="covidTableHeader">Arm 1 / Int. 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Primary Outcome Measures<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
+                    <th class="covidTableHeader">Primary Outcome Measures<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">The most important outcome measure for evaluating the effect of an intervention/treatment. Most clinical studies have one primary outcome measure, but some have more than one.</span></a></th>
                   </tr>
                   {% for object in covidtrials %}
                   <tr>

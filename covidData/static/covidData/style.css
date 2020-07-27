@@ -94,7 +94,7 @@ ul {
 
 .headerColumnTooltip .headerColumnTooltipText {
   visibility: hidden;
-  width: 120px;
+  width: 2000%;
   bottom: 100%;
   left: 50%;
   margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
@@ -103,7 +103,7 @@ ul {
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
- 
+  font-size: 120%;
   position: absolute;
   z-index: 1;
 }
