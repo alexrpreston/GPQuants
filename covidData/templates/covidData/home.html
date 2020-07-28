@@ -9,101 +9,15 @@
     <body>
         <div id="navBar">
             <ul>
-                <li><a>Corporate Flights</a></li>
-                <li><a>US Senate Trading</a></li>
-                <li><a>Insider Trading</a></li>
-                <li><a>Covid-19 Research</a></li>
+                <li><a href="{% url 'currencyData' %}">Currencies</a></li>
+                <li><a href="{% url 'commodityData' %}">Commodities</a></li>
+                <li><a href="{% url 'insiderTradingData' %}">Insider Trading</a></li>
+                <li><a href="{% url 'covidResearch' %}">Covid-19 Research</a></li>
             </ul>
-            <h1 class="companyHeader">GP Quantitative</li>
+            <h1 class="companyHeader"><a href="{% url 'home' %}" style="text-decoration: none;">GP Quantitative</a></li>
         </div>
-        <div class="outerbox">
-            <a href="{% url 'scrape' %}">Refresh the Data</a>
-                <h1 class="tableHeaderName">Top Treatments used in Trials</h1>
-                <table>
-                  <tr>
-                    <th class="covidTableHeader">Treatment</th>
-                    <th class="covidTableHeader">Count</th>
-                  </tr>
-                  {% for treatment in covidTreatments.treatmentTypes %}
-                    {% for freq in covidTreatments.treatmentTypeFreq %}
-                      {% if forloop.counter == forloop.parentloop.counter %}
-                        <tr>
-                          <td class="rowData">{{ treatment }}</td>
-                          <td class="rowData">{{ freq }} </td>
-                        </tr>
-                      {% endif %}
-                    {% endfor %}
-                  {% endfor %}
-                  
-                
-                </table>
-
-                
-                <h1 class="tableHeaderName">Covid-19 Current Clinical Trials</h1>
-                <table class="covidTrialsTable">
-                  <tr>
-                    <th class="covidTableHeader">Brief Title<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <!--<th class="covidTableHeader">Brief Summary<a class="headerColumnTooltip"><span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>-->
-                    <th class="covidTableHeader">Study Type<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">A type of clinical study in which participants are assigned to groups that receive one or more intervention/treatment (or no intervention) so that researchers can evaluate the effects of the interventions on biomedical or health-related outcomes. This allows for comparison between interventions and offers a scientifically robust method of determining the safety and outcome of the intervention.</span></a></th>
-                    <th class="covidTableHeader">Int. / Treatment 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">A process or action whose efficacy is the focus of a clinical study. Interventions include drugs, procedures, vaccines, and other products that are either investigational or already available. Interventions can also include noninvasive approaches, such as diet or exercise. Interventions 1 and 2 will usually be adminesteed to exclusive groups and their outcomes compared.</span></a></th>
-                    <th class="covidTableHeader">Int. / Treatment 2<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">A process or action whose efficacy is the focus of a clinical study. Interventions include drugs, procedures, vaccines, and other products that are either investigational or already available. Interventions can also include noninvasive approaches, such as diet or exercise. Interventions 1 and 2 will usually be adminesteed to exclusive groups and their outcomes compared.</span></a></th>
-                    <th class="covidTableHeader">Enrollement<a class="headerColumnTooltip"><span class="headerColumnTooltipText">The target number of participants that the researchers need for the study.</span></a></th>
-                    <th class="covidTableHeader">Study Start Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Date that the first participant was enrolled in the study.</span></a></th>
-                    <th class="covidTableHeader">Est. Primary Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">The date on which the last participant in a clinical study was examined or received an intervention to collect final data for the primary outcome measure.</span></a></th>
-                    <th class="covidTableHeader">Est. Study Completion Date<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">The date on which the last participant in a clinical study was examined or received an intervention/treatment to collect final data for secondary outcome measures and adverse events (that is, the last participant's last visit).</span></a></th>
-                    <th class="covidTableHeader">Arm 1 / Int. 1<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">Lorem Ipsum</span></a></th>
-                    <th class="covidTableHeader">Primary Outcome Measures<a class="headerColumnTooltip">﹖<span class="headerColumnTooltipText">The most important outcome measure for evaluating the effect of an intervention/treatment. Most clinical studies have one primary outcome measure, but some have more than one.</span></a></th>
-                  </tr>
-                  {% for object in covidtrials %}
-                  <tr>
-                      <td class="rowData">{{ object.title }}</td>
-                      <!--<td class="rowData">{{ object.briefSummary }}</td>-->
-                      <td class="rowData">{{ object.studyType }}</td>
-                      <td class="rowData">{{ object.firstintervention }}</td>
-                      <td class="rowData">Lorem Ipsum</td>
-                      <td class="rowData">{{ object.enrollment }}</td>
-                      <td class="rowData">{{ object.startDate }}</td>
-                      <td class="rowData">{{ object.primaryCompletionDate }}</td>
-                      <td class="rowData">{{ object.studyCompletionDate }}</td>
-                      <td class="rowData">{{ object.armfirstintervention }}</td>
-                      <td class="rowData">{{ object.primaryOutcomeMes }}</td>
-                  </tr>
-                  
-                  {% endfor %}
-                  
-                </table>
-                        
-                        
-                <h1 class="tableHeaderName">Covid-19 Current News Headlines involving <br>Treatments/Vaccines</h1>
-                    <table class="covidNewsTable">
-                        <tr>
-                          <th class="covidTableHeader">Article Title</th>
-                          <th class="covidTableHeader">Source</th>
-                          <th class="covidTableHeader">Date</th>
-                        </tr>
-                        {% for object in covidHeadline %}
-                        
-                        <tr class="collapsible">
-                            
-                            <td class="rowData">{{ object.title }}</td>
-                            <td class="rowData">{{ object.source }}</td>
-                            <td class="rowData">{{ object.publishedData }}</td>
-                        </tr>
-                        
-                          <tr  class="content">
-                            <div  class="content">
-                              <td style="border: 0px">{{ object.desc }}</td>
-                              <p></p>
-                            </div>
-        
-                          </tr>
-                          
-                        
-                        {% endfor %}
-                        
-                      </table>
-            
-        </div>
+        {% block content %}
+        {% endblock %}
         
     </body>
 </html>

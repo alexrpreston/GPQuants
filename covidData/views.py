@@ -7,7 +7,7 @@ from .trialCSVData import getTreatmentTypes
 import requests
 
 
-def scrape(response):
+def covidDataScraper(response):
     covidHeadlines.objects.all().delete()
     covidClinicalTrials.objects.all().delete()
     covidTreatmentTypes.objects.all().delete()
@@ -69,9 +69,22 @@ def scrape(response):
         newTreatmentList.treatmentTypeFreq.append(int(treatment[1]/2))
     newTreatmentList.save()
     
-    return redirect("../")
+    return redirect("../covidResearch")
 
-def index(request):
+def insiderTradingDataScraper(request):
+
+    return redirect("../insiderTradingData")
+
+def currencyDataScraper(request):
+    
+    return redirect("../currencyData")
+
+def commodityDataScraper(request):
+    
+    return redirect("../commodityData")
+
+
+def covidResearch(request):
     covidHeadlinesFull = covidHeadlines.objects.all()[8:]
     covidTrialsFull = covidClinicalTrials.objects.all()
     treatmentTypes = covidTreatmentTypes.objects.first()
@@ -80,4 +93,27 @@ def index(request):
         "covidHeadline": covidHeadlinesFull,
         "covidTreatments": treatmentTypes,
     }
-    return render(request, "covidData/home.html", context)
+    return render(request, "covidData/covidData.html", context)
+
+def insiderTradingData(request):
+    context = {
+        
+    }
+    return render(request, "covidData/insiderTradingData.html", context)
+
+
+def currencyData(request):
+    context = {
+        
+    }
+    return render(request, "covidData/currencyData.html", context)
+
+def commodityData(request):
+    context = {
+
+    }
+    return render(request, "covidData/commodityData.html", context)
+
+
+def home(request):
+    return render(request, "covidData/home.html")
