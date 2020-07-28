@@ -1,6 +1,6 @@
 from django.urls import path
 
-from covidData.views import covidResearch, covidDataScraper, home, commodityData, commodityDataScraper, currencyData, currencyDataScraper, insiderTradingData, insiderTradingData
+from GPQuants.views import covidResearch, covidDataScraper, home, commodityData, commodityDataScraper, currencyData, currencyDataScraper, insiderTradingData, insiderTradingData
 
 urlpatterns = [
     path('', home, name='home'),

@@ -26,7 +26,7 @@ treatments = [
 ]
 
 def getTreatmentTypes():
-    with open('/Users/alexpreston/Work/Coding/GPQuants/covidData/trials.csv') as csv_file:
+    with open('/Users/alexpreston/Work/Coding/GPQuants/GPQuants/trials.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -44,7 +44,7 @@ def getTreatmentTypes():
 
 def getTrialsByCountry():
     countries = []
-    with open('/Users/alexpreston/Work/Coding/GPQuants/covidData/trials.csv') as csv_file:
+    with open('/Users/alexpreston/Work/Coding/GPQuants/GPQuants/trials.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -59,7 +59,7 @@ print(getTreatmentTypes())
 
 def loadMap():
     num_colors = 9
-    filename = "/Users/alexpreston/Work/Coding/GPQuants/covidData/trials.csv"
+    filename = "/Users/alexpreston/Work/Coding/GPQuants/GPQuants/trials.csv"
     year = '2012'
     cols = ['Country Name', 'Country Code', year]
     title = 'Forest area as percentage of land area in {}'.format(year)

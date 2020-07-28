@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from newsapi import NewsApiClient
-from covidData.models import covidHeadlines, covidClinicalTrials, covidTreatmentTypes
+from GPQuants.models import covidHeadlines, covidClinicalTrials, covidTreatmentTypes
 from .trialCSVData import getTreatmentTypes
 import requests
 
@@ -93,27 +93,27 @@ def covidResearch(request):
         "covidHeadline": covidHeadlinesFull,
         "covidTreatments": treatmentTypes,
     }
-    return render(request, "covidData/covidData.html", context)
+    return render(request, "GPQuants/covidData.html", context)
 
 def insiderTradingData(request):
     context = {
         
     }
-    return render(request, "covidData/insiderTradingData.html", context)
+    return render(request, "GPQuants/insiderTradingData.html", context)
 
 
 def currencyData(request):
     context = {
         
     }
-    return render(request, "covidData/currencyData.html", context)
+    return render(request, "GPQuants/currencyData.html", context)
 
 def commodityData(request):
     context = {
 
     }
-    return render(request, "covidData/commodityData.html", context)
+    return render(request, "GPQuants/commodityData.html", context)
 
 
 def home(request):
-    return render(request, "covidData/home.html")
+    return render(request, "GPQuants/home.html")
