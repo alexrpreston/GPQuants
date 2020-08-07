@@ -5,8 +5,10 @@
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'GPQuants/style.css' %}">
-    </head>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+      </head>
     <body>
+
         <div id="navBar">
             <ul>
                 <li><a href="{% url 'currencyData' %}">Currencies</a></li>
@@ -14,11 +16,21 @@
                 <li><a href="{% url 'insiderTradingData' %}">Insider Trading</a></li>
                 <li><a href="{% url 'covidResearch' %}">Covid-19 Research</a></li>
             </ul>
-            <h1 class="companyHeader"><a href="{% url 'home' %}" style="text-decoration: none;">GP Quantitative</a></li>
+            <h1 class="companyHeader"><a href="{% url 'homeWithData' %}" class="companyHeaderLink">GP Quantitative</a></li>
         </div>
-        {% block content %}
-        {% endblock %}
+
+          {% block content %}
+          {% endblock %}
         
+        <style>
+          html{
+            background: url("{% static 'GPQuants/stockBackground.jpg' %}") no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+          }
+          </style>
     </body>
 </html>
 

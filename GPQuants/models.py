@@ -35,3 +35,8 @@ class covidClinicalTrials(models.Model):
 class covidTreatmentTypes(models.Model):
     treatmentTypes = ArrayField(models.TextField(blank=True, null=True, default=""), default=list)
     treatmentTypeFreq = ArrayField(models.TextField(blank=True, null=True, default=""), default=list)
+
+class currencies(models.Model):
+    firstCurrencyChoice = models.TextField()
+    secondCurrencyChoice = models.TextField()
+    

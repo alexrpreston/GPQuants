@@ -2,8 +2,24 @@
 
 {% block content %}
 <div class="outerbox">
-    
-    
-</div>
+    <h1 class="currencyHeader">Enter a currency conversion you would like to analyze</h1>
+    <form method='POST'> {% csrf_token %}
+        <div class="currencyForm">
+            <div class="currencyChoice">
+                {{ form.firstCurrencyChoice }}
+            </div>
+            <div class="conversionToText">
+                <p>To</p>
+            </div>
+            
+            <div class="currencyChoice">
+                {{ form.secondCurrencyChoice }}
+            </div>
+            <input class="currencyFormSubmit" type="submit" value="Analyze"></a>
+        </div>
+        
 
+        
+    </form>
+</div>
 {% endblock %}

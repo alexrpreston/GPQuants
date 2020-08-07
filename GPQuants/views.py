@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from newsapi import NewsApiClient
-from GPQuants.models import covidHeadlines, covidClinicalTrials, covidTreatmentTypes
+from GPQuants.models import covidHeadlines, covidClinicalTrials, covidTreatmentTypes, currencies
 from .trialCSVData import getTreatmentTypes
 import requests
+from GPQuants.form import currencyForm
 
 
 def covidDataScraper(response):
@@ -28,7 +29,8 @@ def covidDataScraper(response):
         print(new_headline.title)
         new_headline.url = f['url']
         new_headline.desc = f['description']
-        new_headline.publishedData = f['publishedAt']
+        dataPublished = f['publishedAt']
+        new_headline.publishedData = dataPublished[0:dataPublished.find("T")]
         new_headline.save()
 
     # ############################################################################
@@ -102,11 +104,31 @@ def insiderTradingData(request):
     return render(request, "GPQuants/insiderTradingData.html", context)
 
 
-def currencyData(request):
-    context = {
+def currencyData(response):
+    if response.method == "POST":
+        form = currencyForm(response.POST)
+            
+        if form.is_valid():
+            print("Heloo")
         
+
+
+            # t = currencies(text=n, Omit_Questions=removeQuestions, Omit_Exclamations=removeExclamations, Omit_Quotations=removeQuotes)
+            # for indivSum in shortend:
+            #     t.individualSummaries.append(indivSum)
+            # t.save()
+
+        # ls = currencies.objects.get(id=t.id)
+        context = {
+            'form': form,
+        }
+        return render(response, "GPQuants/currencyData.html", context)
+    else:
+        form = currencyForm()
+    context = {
+        'form': form,
     }
-    return render(request, "GPQuants/currencyData.html", context)
+    return render(response, "GPQuants/currencyData.html", context)
 
 def commodityData(request):
     context = {
@@ -117,3 +139,7 @@ def commodityData(request):
 
 def home(request):
     return render(request, "GPQuants/home.html")
+
+def homeWithData(request):
+    return render(request, "GPQuants/homeWithData.html")
+

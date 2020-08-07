@@ -3,8 +3,9 @@
 {% block content %}
 <div class="outerbox">
     <a href="{% url 'covidDataScraper' %}">Refresh the Data</a>
-        <h1 class="tableHeaderName">Top Treatments used in Trials</h1>
-        <table>
+    <h3 class="treatmentTypeTableHeader">Top Treatments used in Trials</h3>
+        <table class="treatmentTypeTable">
+          
           <tr>
             <th class="covidTableHeader">Treatment</th>
             <th class="covidTableHeader">Count</th>
@@ -87,7 +88,6 @@
                 {% endfor %}
                 
               </table>
-    
-</div>
 
+</div>
 {% endblock %}
