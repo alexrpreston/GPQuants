@@ -13,6 +13,13 @@
   flex: 1;
   padding: 0% 1%;
 }
+thead.covidTrialsTableHeader, tbody.covidTrialsTableBody { display: block; }
+
+tbody.covidTrialsTableBody {
+    height: 700px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
 
 .platformIndividualDescription{
   font-family: 'Oswald', sans-serif;
@@ -32,6 +39,8 @@
   color: #F8F8FF;
   font-size: 140%;
 }
+
+
 
 .currencyForm{
   height: 3%;
@@ -106,7 +115,20 @@
 
 .covidTableHeader{
   background-color: #E0E0E0;
-  font-size: 130%;
+  text-align: center;
+  padding: 0% 3%;
+  width: 100%;
+}
+
+.drugCompanyHeader{
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #6EB0AD;
+  background-color: #E0E0E0;
+}
+
+.drugCompanyTable{
+  width: 60%;
+  margin: auto;
 }
 
 
@@ -179,7 +201,7 @@ ul {
   }
 
   .covidNewsTable{
-      width: 80%;
+      width: 70%;
       height: 60%;
       margin: auto;
   } 
@@ -214,11 +236,11 @@ ul {
   margin: auto;
 }
   .rowData{
-
-      font-size: 130%;
-      color: #6EB0AD;
-      padding: 1%;
-      text-decoration: none;
+    text-align: center;
+    font-size: 130%;
+    color: #6EB0AD;
+    padding: 1%;
+    text-decoration: none;
   }
 
   .collapsible {
@@ -237,4 +259,9 @@ ul {
     border-collapse: collapse;
     color: #6EB0AD;
     display: none;
+  }
+
+  .stockSymbolLink{
+    text-decoration: none;
+    color: white;
   }
